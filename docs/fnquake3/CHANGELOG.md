@@ -23,6 +23,7 @@ Keep short user-facing bullets under `Unreleased` as changes land. During releas
 - _None yet._
 
 ### Fixes
+- Removed the engine's `0.1`–`10` mouse sensitivity limit. Set values outside that range with the `sensitivity` console command or in a config file.
 - Generated world dlights washed areas out: every proxy emitted at full strength regardless of its `q3map_surfaceLight` value, double-counting light the map already has baked in. Proxy radiance is now relative to the authored emission and capped, tunable with the new `r_surfaceLightProxyRadiance` (default `0.15`), and proxy reach is capped at 1024 units.
 - Generated world dlights came out white. A shader that declares only `q3map_surfaceLight` — which is most retail light shaders — fell through to the lightmap and vertex averages, both blown out on a light panel. The emitter's own texture is now averaged for its color the way q3map2 does.
 - Dynamic-light shadows were culled on whether the light's own origin projected onto the screen, so a shadow blinked out whenever its light passed behind or beside the camera — exactly when that light throws its longest shadows into view. Culling now tests the light's volume against the frustum.
